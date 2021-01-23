@@ -1,0 +1,11 @@
+<app-task
+  *ngFor="let task of tasks"
+  [task]="task"
+  (deleteEvent)="deleteTask($event)"
+  (toggleDoneEvent)="toggleDone($event)"
+></app-task>
+
+<form>
+  <input name="newTask" [(ngModel)]="newTask" />
+  <button (click)="addTask($event)">Add new task</button>
+</form>
