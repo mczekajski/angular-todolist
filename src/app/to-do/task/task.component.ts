@@ -14,7 +14,7 @@ export class TaskComponent implements OnInit {
   @Output() editEvent = new EventEmitter();
 
   showEditTaskForm = false;
-  editedTask: string
+  editedTask: string;
 
   constructor() { }
   
@@ -32,7 +32,6 @@ export class TaskComponent implements OnInit {
 
   editTask(): void {
     this.task.task = this.editedTask;
-    this.editedTask = "";
     this.editEvent.next(this.task);
   }
 

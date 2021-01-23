@@ -39,5 +39,6 @@ export class ListComponent implements OnInit {
     event.preventDefault();
     const task = { id: "", candidate: `${this.surname}.${this.name}`, task: this.newTask, is_completed: 0 }
     this.listService.addTask(this.name, this.surname, task).subscribe(() => this.getTasks());
+    this.newTask = "";
   }
 }
