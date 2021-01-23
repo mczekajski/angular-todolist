@@ -47,7 +47,7 @@
 </div>
 
 <div class="d-flex justify-content-center mt-2" *ngIf="showEditTaskForm">
-  <input placeholder="Edit task description" name="editedTask" [(ngModel)]="editedTask" />
+  <input placeholder="New task description" name="editedTask" [(ngModel)]="editedTask" />
   <button [disabled]="!editedTask" class="btn btn-primary ml-2" (click)="editTask()">Edit</button>
 </div>
 
