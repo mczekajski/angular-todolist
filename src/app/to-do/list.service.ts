@@ -9,10 +9,6 @@ export interface Task {
   is_completed: number
 }
 
-export interface Tasks {
-  data: Array<Task>;
-};
-
 @Injectable({
   providedIn: 'root'
 })
@@ -29,7 +25,7 @@ export class ListService {
     return formData;
   }
 
-  public getTasks<Tasks>(name: string, surname: string) {
+  public getTasks(name: string, surname: string) {
     return this.http.get(`https://angular.massivepixel.io/api/${surname}.${name}`).pipe(
       pluck('data'));
   }

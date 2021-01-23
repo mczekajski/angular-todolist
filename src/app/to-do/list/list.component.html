@@ -1,11 +1,20 @@
-<app-task
-  *ngFor="let task of tasks"
+<button (click)="showAddTaskForm = !showAddTaskForm">Add new task</button>
+<h1>To-do list</h1>
+<button (click)="showDoneTasks = !showDoneTasks">Show/hide done tasks</button>
+
+<form *ngIf="showAddTaskForm">
+  <input name="newTask" [(ngModel)]="newTask" />
+  <button (click)="addTask($event)">Add</button>
+</form>
+
+<hr />
+
+<ng-container *ngFor="let task of tasks">
+  <app-task
+  *ngIf="showDoneTasks || !task.is_completed"
   [task]="task"
   (deleteEvent)="deleteTask($event)"
-  (toggleDoneEvent)="toggleDone($event)"
+  (toggleDoneEvent)="updateTask($event)"
+  (editEvent)="updateTask($event)"
 ></app-task>
-
-<form>
-  <input name="newTask" [(ngModel)]="newTask" />
-  <button (click)="addTask($event)">Add new task</button>
-</form>
+</ng-container>

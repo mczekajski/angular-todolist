@@ -12,6 +12,8 @@ export class ListComponent implements OnInit {
 
   tasks;
   newTask: string;
+  showAddTaskForm = false;
+  showDoneTasks = true;
 
   constructor(private listService: ListService) { }
 
@@ -25,18 +27,17 @@ export class ListComponent implements OnInit {
     });
   }
 
-  toggleDone(task: Task) {
-    this.listService.updateTask(this.name, this.surname, task.id, task).subscribe(data => console.log(data));
+  updateTask(task: Task) {
+    this.listService.updateTask(this.name, this.surname, task.id, task).subscribe();
   }
 
   deleteTask(id: string) {
-    this.listService.deleteTask(this.name, this.surname, id).subscribe(data => console.log(data));
+    this.listService.deleteTask(this.name, this.surname, id).subscribe(() => this.getTasks());
   }
   
   addTask = (event: Event) => {
     event.preventDefault();
     const task = { id: "", candidate: `${this.surname}.${this.name}`, task: this.newTask, is_completed: 0 }
-    this.listService.addTask(this.name, this.surname, task).subscribe(data => console.log(data));
-    this.getTasks();
+    this.listService.addTask(this.name, this.surname, task).subscribe(() => this.getTasks());
   }
 }

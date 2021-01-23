@@ -1,7 +1,12 @@
-<p>task:</p>
 {{ task.task }}
 {{ task.is_completed }}
 <button (click)="toggleDone()">Done/Undone</button>
-<!-- <button (click)="updateTask()">Edit task</button> -->
+<button (click)="showEditTaskForm = !showEditTaskForm">Edit task</button>
 <button (click)="deleteTask()">Delete task</button>
+
+<form *ngIf="showEditTaskForm">
+    <input name="editedTask" [(ngModel)]="editedTask" />
+    <button (click)="editTask()">Edit</button>
+  </form>
+
 <hr />
